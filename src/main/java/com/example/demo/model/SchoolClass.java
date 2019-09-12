@@ -1,23 +1,20 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class SchoolClass {
+public class SchoolClass{
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
-
+    Integer classId;
     String className;
 
-    public Integer getId() {
-        return id;
+    public Integer getClassId() {
+        return classId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setClassId(Integer classId) {
+        this.classId = classId;
     }
 
     public String getClassName() {
@@ -27,4 +24,5 @@ public class SchoolClass {
     public void setClassName(String className) {
         this.className = className;
     }
+
 }

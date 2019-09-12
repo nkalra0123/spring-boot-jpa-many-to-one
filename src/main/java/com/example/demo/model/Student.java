@@ -1,17 +1,18 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Student {
+public class Student  {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
     Integer id;
-
     String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "className", referencedColumnName = "className")
+    SchoolClass schoolClass;
 
     public String getName() {
         return name;
@@ -27,5 +28,13 @@ public class Student {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public SchoolClass getSchoolClass() {
+        return schoolClass;
+    }
+
+    public void setSchoolClass(SchoolClass schoolClass) {
+        this.schoolClass = schoolClass;
     }
 }

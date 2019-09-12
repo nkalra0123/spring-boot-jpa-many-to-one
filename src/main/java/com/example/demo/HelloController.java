@@ -27,7 +27,7 @@ public class HelloController {
     public String addClass(@PathVariable("id") Integer id, @PathVariable("name") String name)
     {
         SchoolClass schoolClass = new SchoolClass();
-        schoolClass.setId(id);
+        schoolClass.setClassId(id);
         schoolClass.setClassName(name);
 
         classRepository.save(schoolClass);
@@ -39,11 +39,16 @@ public class HelloController {
     public String addStudent(@RequestParam("id") Integer id, @RequestParam("name") String name)
     {
         Student student = new Student();
-
         student.setId(id);
-
         student.setName(name);
 
+        SchoolClass schoolClass = new SchoolClass();
+        schoolClass.setClassId(1);
+        schoolClass.setClassName("LKG");
+
+        student.setSchoolClass(schoolClass);
+
+        //classRepository.save(schoolClass);
         studentRepository.save(student);
 
         return "ok";
