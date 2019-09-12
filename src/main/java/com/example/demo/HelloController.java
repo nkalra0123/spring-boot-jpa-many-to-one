@@ -4,10 +4,7 @@ package com.example.demo;
 import com.example.demo.model.SchoolClass;
 import com.example.demo.repository.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
@@ -21,12 +18,9 @@ public class HelloController {
         return "<h1> Hello </h1>";
     }
 
-    @PostMapping("/class")
-    public String addClass()
+    @PostMapping("/class/{id}/{name}")
+    public String addClass(@PathVariable("id") Integer id, @PathVariable("name") String name)
     {
-        String name = "class1";
-        Integer id = 1;
-
         SchoolClass schoolClass = new SchoolClass();
         schoolClass.setId(id);
         schoolClass.setClassName(name);
